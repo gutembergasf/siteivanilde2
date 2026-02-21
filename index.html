@@ -2,514 +2,557 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Em Manutenção | Dra. Ivanilde Cavalcanti</title>
-    <meta name="description" content="Site em manutenção. Em breve de volta com novidades." />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Dra. Ivanilde Cavalcanti - Endocrinologista</title>
+  <meta name="description"
+    content="Dra. Ivanilde Cavalcanti, Endocrinologista. Especialista em Diabetes, Tireoide, Obesidade, Menopausa e Saúde Hormonal. Agende sua consulta." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#339999",
+            "sand": "#F5E4D4",
+            "gray-custom": "#616160",
+            "background-light": "#f6f8f8",
+            "background-dark": "#141e1e",
+          },
+          fontFamily: {
+            "display": ["Newsreader", "serif"],
+            "sans": ["Newsreader", "serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-        :root {
-            --primary: #339999;
-            --sand: #F5E4D4;
-            --dark: #141e1e;
-            --gray: #616160;
-            --bg: #f6f8f8;
-        }
+    body {
+      font-family: 'Newsreader', serif;
+      color: #616160;
+    }
 
-        body {
-            font-family: 'Newsreader', serif;
-            background: var(--bg);
-            color: var(--gray);
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1.5rem;
-            overflow: hidden;
-        }
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
 
-        /* ── background animated blobs ── */
-        .blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: .18;
-            animation: float 10s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
 
-        .blob-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--primary);
-            top: -150px;
-            left: -150px;
-            animation-delay: 0s;
-        }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
 
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--sand);
-            bottom: -120px;
-            right: -100px;
-            animation-delay: -5s;
-        }
+    .reveal.visible,
+    .reveal-left.visible,
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
 
-        @keyframes float {
+    /* Mobile menu */
+    #mobile-menu {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .4s ease;
+    }
 
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
 
-            50% {
-                transform: translate(30px, -30px) scale(1.05);
-            }
-        }
+    /* WhatsApp pulse */
+    .wa-fab {
+      animation: wa-pulse 2.2s infinite;
+    }
 
-        /* ── card ── */
-        .card {
-            position: relative;
-            z-index: 1;
-            background: white;
-            border-radius: 2rem;
-            padding: 3.5rem 3rem;
-            max-width: 560px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 24px 64px rgba(51, 153, 153, .12);
-            border: 1px solid rgba(51, 153, 153, .1);
-            animation: fadeUp .8s ease both;
-        }
+    @keyframes wa-pulse {
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(32px);
-            }
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, .45);
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      50% {
+        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+      }
+    }
 
-        /* ── logo ── */
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: .75rem;
-            margin-bottom: 2.5rem;
-        }
+    /* Specialty card */
+    .sp-card {
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
 
-        .logo-icon {
-            width: 52px;
-            height: 52px;
-            background: rgba(51, 153, 153, .1);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-        }
-
-        .logo-text {
-            text-align: left;
-        }
-
-        .logo-text h1 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a2e2e;
-            line-height: 1.2;
-        }
-
-        .logo-text p {
-            font-size: .7rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        /* ── gear animation ── */
-        .icon-wrap {
-            width: 96px;
-            height: 96px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, rgba(51, 153, 153, .12), rgba(245, 228, 212, .4));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .icon-wrap .material-symbols-outlined {
-            font-size: 3rem;
-            color: var(--primary);
-            animation: spin 6s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ── badge ── */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            background: rgba(51, 153, 153, .08);
-            color: var(--primary);
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            padding: .35rem .85rem;
-            border-radius: 999px;
-            margin-bottom: 1.25rem;
-        }
-
-        .badge span {
-            font-size: .9rem;
-        }
-
-        h2 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: #1a2e2e;
-            line-height: 1.25;
-            margin-bottom: 1rem;
-        }
-
-        h2 em {
-            color: var(--primary);
-            font-style: italic;
-        }
-
-        p.desc {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            max-width: 420px;
-            margin: 0 auto 2rem;
-        }
-
-        /* ── countdown ── */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .count-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: .25rem;
-        }
-
-        .count-num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            background: rgba(51, 153, 153, .06);
-            border: 1px solid rgba(51, 153, 153, .15);
-            border-radius: .75rem;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .count-label {
-            font-size: .65rem;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            color: var(--gray);
-            font-weight: 600;
-        }
-
-        /* ── email form ── */
-        .form-row {
-            display: flex;
-            gap: .75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row input {
-            flex: 1;
-            padding: .85rem 1.1rem;
-            border: 1.5px solid rgba(51, 153, 153, .2);
-            border-radius: .75rem;
-            font-family: inherit;
-            font-size: .95rem;
-            color: #1a2e2e;
-            background: var(--bg);
-            outline: none;
-            transition: border-color .2s;
-        }
-
-        .form-row input:focus {
-            border-color: var(--primary);
-        }
-
-        .form-row button {
-            padding: .85rem 1.4rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: .75rem;
-            font-family: inherit;
-            font-size: .95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background .2s, transform .15s;
-            white-space: nowrap;
-        }
-
-        .form-row button:hover {
-            background: #2b8080;
-        }
-
-        .form-row button:active {
-            transform: scale(.97);
-        }
-
-        #form-success {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            gap: .5rem;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: .95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ── divider ── */
-        .divider {
-            width: 48px;
-            height: 2px;
-            background: rgba(51, 153, 153, .2);
-            border-radius: 99px;
-            margin: 0 auto 1.5rem;
-        }
-
-        /* ── contact links ── */
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: .75rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: .4rem;
-            padding: .6rem 1.1rem;
-            border-radius: .65rem;
-            font-size: .85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all .2s;
-        }
-
-        .contact-links a.wa {
-            background: rgba(37, 211, 102, .1);
-            color: #1a8a3c;
-        }
-
-        .contact-links a.wa:hover {
-            background: #25D366;
-            color: white;
-        }
-
-        .contact-links a.ig {
-            background: rgba(225, 48, 108, .08);
-            color: #e1306c;
-        }
-
-        .contact-links a.ig:hover {
-            background: #e1306c;
-            color: white;
-        }
-
-        .contact-links a.mail {
-            background: rgba(51, 153, 153, .08);
-            color: var(--primary);
-        }
-
-        .contact-links a.mail:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .contact-links a .material-symbols-outlined {
-            font-size: 1.1rem;
-        }
-
-        /* ── footer note ── */
-        .footer-note {
-            margin-top: 2.5rem;
-            font-size: .75rem;
-            color: #aaa;
-            letter-spacing: .03em;
-        }
-
-        @media (max-width: 500px) {
-            .card {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .form-row {
-                flex-direction: column;
-            }
-
-            .count-num {
-                width: 58px;
-                height: 58px;
-                font-size: 1.6rem;
-            }
-        }
-    </style>
+    .sp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(51, 153, 153, .12);
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-background-light text-gray-custom">
 
-    <!-- Background blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+  <!-- ═══ HEADER ═══ -->
+  <header class="sticky top-0 z-50 w-full bg-background-light/95 backdrop-blur-sm border-b border-primary/10"
+    id="header">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-28 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center">
+        <img src="logo.png" alt="Dra. Ivanilde Cavalcanti - Endocrinologia e Metabologia"
+          class="h-28 w-auto object-contain" />
+      </a>
 
-    <div class="card">
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="text-sm font-semibold text-primary border-b-2 border-primary pb-1">Início</a>
+        <a href="sobre.html" class="text-sm font-medium hover:text-primary transition-colors">Sobre Ivanilde</a>
+        <a href="especialidades.html" class="text-sm font-medium hover:text-primary transition-colors">Áreas de
+          Atuação</a>
+      </nav>
 
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-icon">
-                <span class="material-symbols-outlined" style="font-size:1.8rem">medical_services</span>
-            </div>
-            <div class="logo-text">
-                <h1>Dra. Ivanilde Cavalcanti</h1>
-                <p>Endocrinologia &amp; Metabologia</p>
-            </div>
-        </div>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="https://wa.me/5581996849482" target="_blank"
+          class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 transition-all shadow-sm">
+          <span class="material-symbols-outlined text-lg">calendar_month</span>
+          Agendar Consulta
+        </a>
+      </div>
 
-        <!-- Icon -->
-        <div class="icon-wrap">
-            <span class="material-symbols-outlined">settings</span>
-        </div>
-
-        <!-- Badge -->
-        <div class="badge">
-            <span class="material-symbols-outlined">construction</span>
-            Manutenção programada
-        </div>
-
-        <!-- Headline -->
-        <h2>Estamos preparando algo <em>ainda melhor</em> para você.</h2>
-
-        <p class="desc">
-            Nosso site está passando por melhorias para oferecer uma experiência ainda mais completa. Voltaremos em
-            breve!
-        </p>
-
-        <!-- Countdown -->
-        <div class="countdown">
-            <div class="count-item">
-                <div class="count-num" id="cd-days">00</div><span class="count-label">Dias</span>
-            </div>
-            <div class="count-item">
-                <div class="count-num" id="cd-hours">00</div><span class="count-label">Horas</span>
-            </div>
-            <div class="count-item">
-                <div class="count-num" id="cd-mins">00</div><span class="count-label">Min</span>
-            </div>
-            <div class="count-item">
-                <div class="count-num" id="cd-secs">00</div><span class="count-label">Seg</span>
-            </div>
-        </div>
-
-        <!-- Email form -->
-        <form id="notify-form" onsubmit="handleNotify(event)">
-            <div class="form-row">
-                <input type="email" placeholder="Seu e-mail para ser avisado" required id="notify-email" />
-                <button type="submit">Avisar-me</button>
-            </div>
-        </form>
-        <div id="form-success">
-            <span class="material-symbols-outlined">check_circle</span>
-            Ótimo! Você será avisado quando voltarmos.
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- Contact links -->
-        <p style="font-size:.82rem; margin-bottom:.85rem; color:#999;">Enquanto isso, fale comigo por:</p>
-        <div class="contact-links">
-            <a href="https://wa.me/5581999990000" target="_blank" class="wa">
-                <span class="material-symbols-outlined">chat</span> WhatsApp
-            </a>
-            <a href="https://instagram.com" target="_blank" class="ig">
-                <span class="material-symbols-outlined">photo_camera</span> Instagram
-            </a>
-            <a href="mailto:contato@draivanilde.com.br" class="mail">
-                <span class="material-symbols-outlined">mail</span> E-mail
-            </a>
-        </div>
-
-        <p class="footer-note">© 2024 Dra. Ivanilde Cavalcanti · CRM 27396 · RQE 12999</p>
+      <!-- Mobile button -->
+      <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors" aria-label="Menu">
+        <span class="material-symbols-outlined text-slate-900 text-2xl" id="menu-icon">menu</span>
+      </button>
     </div>
 
-    <script>
-        // Countdown — data alvo: 7 dias a partir de hoje
-        const target = new Date();
-        target.setDate(target.getDate() + 7);
+    <!-- Mobile nav -->
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-slate-100">
+      <nav class="flex flex-col px-4 py-4 gap-1">
+        <a href="index.html"
+          class="mobile-link px-3 py-3 rounded-lg text-slate-700 font-medium hover:bg-sand/40 hover:text-primary transition-all">Início</a>
+        <a href="sobre.html"
+          class="mobile-link px-3 py-3 rounded-lg text-slate-700 font-medium hover:bg-sand/40 hover:text-primary transition-all">Sobre
+          Ivanilde</a>
+        <a href="especialidades.html"
+          class="mobile-link px-3 py-3 rounded-lg text-slate-700 font-medium hover:bg-sand/40 hover:text-primary transition-all">Áreas
+          de Atuação</a>
 
-        function updateCountdown() {
-            const diff = target - new Date();
-            if (diff <= 0) return;
-            const d = Math.floor(diff / 86400000);
-            const h = Math.floor((diff % 86400000) / 3600000);
-            const m = Math.floor((diff % 3600000) / 60000);
-            const s = Math.floor((diff % 60000) / 1000);
-            document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
-            document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
-            document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
-            document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        <a href="https://wa.me/5581996849482" target="_blank"
+          class="mt-2 flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold hover:bg-primary/90 transition-all">
+          <span class="material-symbols-outlined text-lg">calendar_month</span>
+          Agendar Consulta
+        </a>
+      </nav>
+    </div>
+  </header>
 
-        // Form
-        function handleNotify(e) {
-            e.preventDefault();
-            document.getElementById('notify-form').style.display = 'none';
-            const s = document.getElementById('form-success');
-            s.style.display = 'flex';
-        }
-    </script>
+  <!-- ═══ HERO ═══ -->
+  <section class="relative overflow-hidden bg-sand/20 pt-16 pb-24 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+      <!-- Texto -->
+      <div class="order-2 lg:order-1 flex flex-col gap-8 reveal-left">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest w-fit">
+          <span class="material-symbols-outlined text-sm">verified_user</span>
+          Endocrinologia &amp; Metabologia
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight text-slate-900">
+          Cuidar é uma arte pautada na <span class="italic text-primary">ciência e na empatia.</span>
+        </h1>
+        <p class="text-lg text-gray-custom max-w-xl leading-relaxed">
+          Especialista em Recife focada em proporcionar bem-estar através de um olhar humanizado e tratamentos baseados
+          em evidências.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://wa.me/5581996849482" target="_blank"
+            class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined">calendar_month</span>
+            Agendar Consulta
+          </a>
+          <a href="especialidades.html"
+            class="inline-flex items-center justify-center gap-2 bg-white border-2 border-primary/30 text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary/5 transition-all">
+            Ver Áreas de Atuação
+          </a>
+        </div>
+
+      </div>
+      <!-- Imagem -->
+      <div class="order-1 lg:order-2 relative reveal-right">
+        <div class="absolute -inset-4 bg-sand/50 rounded-2xl -z-10"></div>
+        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+          <img alt="Dra. Ivanilde Cavalcanti" class="w-full h-full object-cover" src="dra-ivanilde.jpg" />
+        </div>
+        <div
+          class="absolute -bottom-5 -left-5 bg-white px-7 py-5 rounded-2xl shadow-xl border-l-4 border-primary hidden sm:block">
+          <p class="text-primary font-bold text-xl">CRM 27396</p>
+          <p class="text-xs text-gray-custom uppercase tracking-tight">RQE 13660</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOBRE ═══ -->
+  <section class="py-24 px-6 lg:px-12 bg-white">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <span class="text-primary font-bold uppercase tracking-widest text-xs">Sobre a Médica</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-6">Trajetória de excelência e cuidado
+          humanizado</h2>
+        <p class="text-gray-custom leading-relaxed mb-4">
+          Com mais de 15 anos de dedicação à endocrinologia, a Dra. Ivanilde é guiada por um propósito claro: oferecer
+          um atendimento que enxergue a pessoa por trás do sintoma. Certificada pela Sociedade Brasileira de
+          Endocrinologia e Metabologia.
+        </p>
+        <p class="text-gray-custom leading-relaxed mb-8">
+          Sua missão é proporcionar não apenas tratamentos eficazes, mas uma experiência de cuidado que restabeleça a
+          confiança e a qualidade de vida de cada paciente.
+        </p>
+        <a href="sobre.html" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+          Conhecer a Dra. Ivanilde
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-6 reveal-right">
+        <!-- Residência Clínica Médica -->
+        <div class="bg-background-light p-6 rounded-2xl border border-sand/50">
+          <div class="w-12 h-12 bg-sand flex items-center justify-center rounded-lg mb-4">
+            <span class="material-symbols-outlined text-primary">clinical_notes</span>
+          </div>
+          <h4 class="font-bold text-slate-900 mb-2">Residência Médica</h4>
+          <p class="text-sm text-gray-custom">Clínica Médica no Hospital Agamenon Magalhães — Recife, PE.</p>
+        </div>
+        <!-- Residência Endocrinologia -->
+        <div class="bg-background-light p-6 rounded-2xl border border-sand/50 mt-6">
+          <div class="w-12 h-12 bg-sand flex items-center justify-center rounded-lg mb-4">
+            <span class="material-symbols-outlined text-primary">nephrology</span>
+          </div>
+          <h4 class="font-bold text-slate-900 mb-2">Residência em Endocrinologia</h4>
+          <p class="text-sm text-gray-custom">Endocrinologia e Metabologia no Hospital Geral de Fortaleza — CE.</p>
+        </div>
+        <!-- Título de Especialista -->
+        <div class="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+          <div class="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-lg mb-4">
+            <span class="material-symbols-outlined text-primary">workspace_premium</span>
+          </div>
+          <h4 class="font-bold text-slate-900 mb-2">Título de Especialista</h4>
+          <p class="text-sm text-gray-custom">Certificada pela SBEM — Sociedade Brasileira de Endocrinologia e
+            Metabologia. RQE 13660.</p>
+        </div>
+        <!-- Mestrado -->
+        <div class="bg-primary/5 p-6 rounded-2xl border border-primary/10 mt-6">
+          <div class="w-12 h-12 bg-primary/10 flex items-center justify-center rounded-lg mb-4">
+            <span class="material-symbols-outlined text-primary">school</span>
+          </div>
+          <h4 class="font-bold text-slate-900 mb-2">Mestrado</h4>
+          <p class="text-sm text-gray-custom">Hospital das Clínicas da Universidade Federal de Pernambuco — UFPE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ESPECIALIDADES ═══ -->
+  <section class="py-24 px-6 lg:px-12 bg-background-light" id="especialidades">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <span class="text-primary font-bold uppercase tracking-widest text-xs">Expertise Médica</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-4">Áreas de Atuação</h2>
+        <p class="text-gray-custom max-w-xl mx-auto">Tratamentos especializados focados no equilíbrio hormonal e no
+          bem-estar integral de cada paciente.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cards das 9 especialidades atualizadas do Stitch -->
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.04s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">bloodtype</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Diabetes</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Controle glicêmico personalizado e prevenção de
+            complicações
+            para uma vida ativa e saudável.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.08s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">nephrology</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Tireoide</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Diagnóstico e tratamento de nódulos, hipotireoidismo,
+            hipertireoidismo e outras disfunções.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.12s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">monitor_weight</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Obesidade</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Gerenciamento de peso com abordagem científica e suporte
+            metabólico personalizado.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.16s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">physical_therapy</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Distúrbios Hormonais</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Tratamento de desequilíbrios que afetam o crescimento, o
+            humor e o metabolismo geral.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.20s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">health_metrics</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Síndrome Metabólica</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Gestão integrada de fatores de risco cardiovascular como
+            pressão alta e gordura abdominal.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.24s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">heart_check</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Colesterol</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Acompanhamento do perfil lipídico para prevenção de
+            doenças do coração e circulação.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.28s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">skeleton</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Osteoporose</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Prevenção de fraturas e cuidados com a saúde óssea em
+            diferentes fases da vida.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.32s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">female</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Menopausa</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Qualidade de vida e terapia de reposição hormonal segura
+            durante a transição climaterica.</p>
+        </div>
+        <div
+          class="sp-card bg-white p-8 rounded-xl border border-sand/50 shadow-sm flex flex-col items-center text-center group reveal"
+          style="transition-delay:.36s">
+          <div
+            class="w-16 h-16 bg-sand/40 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined text-primary text-3xl">assignment_turned_in</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Check-up</h3>
+          <p class="text-gray-custom text-sm leading-relaxed">Avaliação endocrinológica completa e preventiva para
+            manter sua saúde em dia.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ A CLÍNICA ═══ -->
+  <section class="py-24 px-6 lg:px-12 bg-white">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+      <div class="flex justify-center items-center reveal-left">
+        <div class="relative">
+          <div class="absolute -inset-4 bg-sand/50 rounded-2xl -z-10"></div>
+          <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-sm w-full">
+            <img src="dra-ivanilde-nova.jpg" alt="Dra. Ivanilde Cavalcanti - Endocrinologista em Recife"
+              class="w-full h-full object-cover object-top" />
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-6 reveal-right">
+        <span class="text-primary font-bold uppercase tracking-widest text-xs">Nosso Ambiente</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Sofisticação em cada detalhe</h2>
+        <p class="text-gray-custom leading-relaxed">
+          Acreditamos que o processo de cura começa no momento em que você atravessa nossas portas. Nossa clínica
+          combina uma atmosfera serena com infraestrutura médica de ponta.
+        </p>
+        <div class="flex items-start gap-4">
+          <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+            <span class="material-symbols-outlined">location_on</span>
+          </div>
+          <div>
+            <p class="font-bold text-slate-900">Hospital Português — Clínica RCDB</p>
+            <p class="text-gray-custom text-sm">Av. Gov. Agamenon Magalhães, 4760 — Real Cirurgia Bariátrica e
+              Digestiva<br />Recife - PE</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div>
+            <p class="font-bold text-slate-900">Horário de Atendimento</p>
+            <p class="text-gray-custom text-sm">Segunda-feira à tarde &nbsp;|&nbsp; Quinta-feira à tarde</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINAL ═══ -->
+  <section class="py-24 px-6 bg-sand/30 relative overflow-hidden">
+    <div class="max-w-3xl mx-auto text-center flex flex-col items-center gap-8 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 italic">Ainda tem dúvidas sobre algum tratamento?</h2>
+      <p class="text-lg text-gray-custom leading-relaxed">
+        Estamos à disposição para esclarecer suas perguntas e encontrar o melhor caminho para a sua saúde.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="https://wa.me/5581996849482" target="_blank"
+          class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-xl font-bold text-lg transition-all">
+          <span class="material-symbols-outlined">chat</span>
+          Fale pelo WhatsApp
+        </a>
+        <a href="especialidades.html"
+          class="inline-flex items-center justify-center gap-2 bg-white border-2 border-primary text-primary hover:bg-primary/5 px-10 py-4 rounded-xl font-bold text-lg transition-all">
+          Ver Especialidades
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="bg-slate-900 text-slate-300 py-16 px-6 lg:px-12" id="footer">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center mb-6">
+          <img src="logo.png" alt="Dra. Ivanilde Cavalcanti" class="h-14 w-auto object-contain brightness-0 invert" />
+        </div>
+        <p class="text-sm leading-relaxed max-w-sm mb-6">
+          Compromisso com a sua saúde e bem-estar através de uma medicina moderna, ética e profundamente humana.
+        </p>
+        <div class="flex gap-4">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"
+            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://wa.me/5581996849482" target="_blank" aria-label="WhatsApp"
+            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#25D366] transition-colors">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Navegação</h4>
+        <ul class="space-y-4 text-sm">
+          <li><a href="sobre.html" class="hover:text-primary transition-colors">Sobre a Dra.</a></li>
+          <li><a href="especialidades.html" class="hover:text-primary transition-colors">Áreas de Atuação</a></li>
+          <li><a href="https://wa.me/5581996849482" target="_blank" class="hover:text-primary transition-colors">Agendar
+              Consulta</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Contato</h4>
+        <ul class="space-y-4 text-sm">
+          <li class="flex items-center gap-3"><span
+              class="material-symbols-outlined text-primary text-sm">call</span>(81) 99999-0000</li>
+          <li class="flex items-center gap-3"><span
+              class="material-symbols-outlined text-primary text-sm">mail</span>contato@draivanilde.com.br</li>
+          <li class="flex items-start gap-3"><span
+              class="material-symbols-outlined text-primary text-sm mt-0.5">location_on</span><span>Av. Agamenon
+              Magalhães, 4775<br />Recife - PE</span></li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+      <p>© 2024 Dra. Ivanilde Cavalcanti. Todos os direitos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+        <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a class="wa-fab fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all group"
+    href="https://wa.me/5581996849482" target="_blank" aria-label="WhatsApp">
+    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+    <span
+      class="absolute right-full mr-4 bg-white text-slate-900 px-4 py-2 rounded-lg text-sm font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+      Fale comigo no WhatsApp
+    </span>
+  </a>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuIcon.textContent = open ? 'close' : 'menu';
+    });
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuIcon.textContent = 'menu';
+    }));
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+
+    // Header shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('shadow-md', window.scrollY > 10);
+    });
+  </script>
 </body>
 
 </html>
