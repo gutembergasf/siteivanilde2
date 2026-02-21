@@ -1,0 +1,11 @@
+{
+  "name": "dra-ivanilde-vasconcelos-site",
+  "version": "1.0.0",
+  "description": "Site da Dra. Ivanilde Vasconcelos - Endocrinologista em Recife",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "author": "Dra. Ivanilde Vasconcelos",
+  "license": "MIT"
+}
