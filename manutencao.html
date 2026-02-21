@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Em Manutenção | Dra. Ivanilde Cavalcanti</title>
+    <meta name="description" content="Site em manutenção. Em breve de volta com novidades." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #339999;
+            --sand: #F5E4D4;
+            --dark: #141e1e;
+            --gray: #616160;
+            --bg: #f6f8f8;
+        }
+
+        body {
+            font-family: 'Newsreader', serif;
+            background: var(--bg);
+            color: var(--gray);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            overflow: hidden;
+        }
+
+        /* ── background animated blobs ── */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .18;
+            animation: float 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--sand);
+            bottom: -120px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+        }
+
+        /* ── card ── */
+        .card {
+            position: relative;
+            z-index: 1;
+            background: white;
+            border-radius: 2rem;
+            padding: 3.5rem 3rem;
+            max-width: 560px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 24px 64px rgba(51, 153, 153, .12);
+            border: 1px solid rgba(51, 153, 153, .1);
+            animation: fadeUp .8s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── logo ── */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(51, 153, 153, .1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .logo-text {
+            text-align: left;
+        }
+
+        .logo-text h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2e2e;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* ── gear animation ── */
+        .icon-wrap {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, rgba(51, 153, 153, .12), rgba(245, 228, 212, .4));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .icon-wrap .material-symbols-outlined {
+            font-size: 3rem;
+            color: var(--primary);
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── badge ── */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: rgba(51, 153, 153, .08);
+            color: var(--primary);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: .35rem .85rem;
+            border-radius: 999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge span {
+            font-size: .9rem;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: #1a2e2e;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        h2 em {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        p.desc {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto 2rem;
+        }
+
+        /* ── countdown ── */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .count-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .25rem;
+        }
+
+        .count-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: rgba(51, 153, 153, .06);
+            border: 1px solid rgba(51, 153, 153, .15);
+            border-radius: .75rem;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .count-label {
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        /* ── email form ── */
+        .form-row {
+            display: flex;
+            gap: .75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: .85rem 1.1rem;
+            border: 1.5px solid rgba(51, 153, 153, .2);
+            border-radius: .75rem;
+            font-family: inherit;
+            font-size: .95rem;
+            color: #1a2e2e;
+            background: var(--bg);
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .form-row input:focus {
+            border-color: var(--primary);
+        }
+
+        .form-row button {
+            padding: .85rem 1.4rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: .75rem;
+            font-family: inherit;
+            font-size: .95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .15s;
+            white-space: nowrap;
+        }
+
+        .form-row button:hover {
+            background: #2b8080;
+        }
+
+        .form-row button:active {
+            transform: scale(.97);
+        }
+
+        #form-success {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: .95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── divider ── */
+        .divider {
+            width: 48px;
+            height: 2px;
+            background: rgba(51, 153, 153, .2);
+            border-radius: 99px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ── contact links ── */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: .75rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .6rem 1.1rem;
+            border-radius: .65rem;
+            font-size: .85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all .2s;
+        }
+
+        .contact-links a.wa {
+            background: rgba(37, 211, 102, .1);
+            color: #1a8a3c;
+        }
+
+        .contact-links a.wa:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .contact-links a.ig {
+            background: rgba(225, 48, 108, .08);
+            color: #e1306c;
+        }
+
+        .contact-links a.ig:hover {
+            background: #e1306c;
+            color: white;
+        }
+
+        .contact-links a.mail {
+            background: rgba(51, 153, 153, .08);
+            color: var(--primary);
+        }
+
+        .contact-links a.mail:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .contact-links a .material-symbols-outlined {
+            font-size: 1.1rem;
+        }
+
+        /* ── footer note ── */
+        .footer-note {
+            margin-top: 2.5rem;
+            font-size: .75rem;
+            color: #aaa;
+            letter-spacing: .03em;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .count-num {
+                width: 58px;
+                height: 58px;
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="card">
+
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined" style="font-size:1.8rem">medical_services</span>
+            </div>
+            <div class="logo-text">
+                <h1>Dra. Ivanilde Cavalcanti</h1>
+                <p>Endocrinologia &amp; Metabologia</p>
+            </div>
+        </div>
+
+        <!-- Icon -->
+        <div class="icon-wrap">
+            <span class="material-symbols-outlined">settings</span>
+        </div>
+
+        <!-- Badge -->
+        <div class="badge">
+            <span class="material-symbols-outlined">construction</span>
+            Manutenção programada
+        </div>
+
+        <!-- Headline -->
+        <h2>Estamos preparando algo <em>ainda melhor</em> para você.</h2>
+
+        <p class="desc">
+            Nosso site está passando por melhorias para oferecer uma experiência ainda mais completa. Voltaremos em
+            breve!
+        </p>
+
+        <!-- Countdown -->
+        <div class="countdown">
+            <div class="count-item">
+                <div class="count-num" id="cd-days">00</div><span class="count-label">Dias</span>
+            </div>
+            <div class="count-item">
+                <div class="count-num" id="cd-hours">00</div><span class="count-label">Horas</span>
+            </div>
+            <div class="count-item">
+                <div class="count-num" id="cd-mins">00</div><span class="count-label">Min</span>
+            </div>
+            <div class="count-item">
+                <div class="count-num" id="cd-secs">00</div><span class="count-label">Seg</span>
+            </div>
+        </div>
+
+        <!-- Email form -->
+        <form id="notify-form" onsubmit="handleNotify(event)">
+            <div class="form-row">
+                <input type="email" placeholder="Seu e-mail para ser avisado" required id="notify-email" />
+                <button type="submit">Avisar-me</button>
+            </div>
+        </form>
+        <div id="form-success">
+            <span class="material-symbols-outlined">check_circle</span>
+            Ótimo! Você será avisado quando voltarmos.
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Contact links -->
+        <p style="font-size:.82rem; margin-bottom:.85rem; color:#999;">Enquanto isso, fale comigo por:</p>
+        <div class="contact-links">
+            <a href="https://wa.me/5581999990000" target="_blank" class="wa">
+                <span class="material-symbols-outlined">chat</span> WhatsApp
+            </a>
+            <a href="https://instagram.com" target="_blank" class="ig">
+                <span class="material-symbols-outlined">photo_camera</span> Instagram
+            </a>
+            <a href="mailto:contato@draivanilde.com.br" class="mail">
+                <span class="material-symbols-outlined">mail</span> E-mail
+            </a>
+        </div>
+
+        <p class="footer-note">© 2024 Dra. Ivanilde Cavalcanti · CRM 27396 · RQE 12999</p>
+    </div>
+
+    <script>
+        // Countdown — data alvo: 7 dias a partir de hoje
+        const target = new Date();
+        target.setDate(target.getDate() + 7);
+
+        function updateCountdown() {
+            const diff = target - new Date();
+            if (diff <= 0) return;
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Form
+        function handleNotify(e) {
+            e.preventDefault();
+            document.getElementById('notify-form').style.display = 'none';
+            const s = document.getElementById('form-success');
+            s.style.display = 'flex';
+        }
+    </script>
+</body>
+
+</html>
