@@ -2,24 +2,24 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
 const PUBLIC_DIR = __dirname;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
-  '.css':  'text/css',
-  '.js':   'application/javascript',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
   '.json': 'application/json',
-  '.png':  'image/png',
-  '.jpg':  'image/jpeg',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
-  '.gif':  'image/gif',
-  '.svg':  'image/svg+xml',
-  '.ico':  'image/x-icon',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
   '.webp': 'image/webp',
 };
 
-const server = http.createServer((req, res) => {
+// Handler compatível com Vercel (exportado) e com http.createServer (local)
+const handler = (req, res) => {
   let urlPath = req.url.split('?')[0];
 
   // Default to index.html
@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        // Try to serve index.html for SPA-like behavior
+        // Tenta servir index.html para rotas desconhecidas
         fs.readFile(path.join(PUBLIC_DIR, 'index.html'), (err2, indexData) => {
           if (err2) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -54,16 +54,23 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': contentType });
     res.end(data);
   });
-});
+};
 
-server.listen(PORT, () => {
-  console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('  🩺  Dra. Ivanilde Vasconcelos - Site no ar!');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(`  ✅  Servidor rodando em: http://localhost:${PORT}`);
-  console.log('  📱  Abra o link acima no seu navegador.');
-  console.log('  🔴  Para parar: pressione Ctrl+C');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('');
-});
+// Exporta para o Vercel
+module.exports = handler;
+
+// Roda localmente se não estiver no Vercel
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  http.createServer(handler).listen(PORT, () => {
+    console.log('');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('  🩺  Dra. Ivanilde Vasconcelos - Site no ar!');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log(`  ✅  Servidor rodando em: http://localhost:${PORT}`);
+    console.log('  📱  Abra o link acima no seu navegador.');
+    console.log('  🔴  Para parar: pressione Ctrl+C');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('');
+  });
+}
