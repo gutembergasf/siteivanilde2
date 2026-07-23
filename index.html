@@ -501,44 +501,97 @@
   </section>
 
   <!-- ═══ A CLÍNICA ═══ -->
-  <section class="py-24 px-6 lg:px-12 bg-white">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
-      <div class="flex justify-center items-center reveal-left">
-        <div class="relative">
-          <div class="absolute -inset-4 bg-sand/50 rounded-2xl -z-10"></div>
-          <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white max-w-sm w-full">
-            <img src="dra-ivanilde-nova.jpg" alt="Dra. Ivanilde Cavalcanti - Endocrinologista em Recife"
-              class="w-full h-full object-cover object-top" />
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col gap-6 reveal-right">
+  <section class="py-24 px-6 lg:px-12 bg-white" id="locais">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mx-auto text-center flex flex-col gap-5 mb-16 reveal">
         <span class="text-primary font-bold uppercase tracking-widest text-xs">Nosso Ambiente</span>
         <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Sofisticação em cada detalhe</h2>
         <p class="text-gray-custom leading-relaxed">
-          Acreditamos que o processo de cura começa no momento em que você atravessa nossas portas. Nossa clínica
-          combina uma atmosfera serena com infraestrutura médica de ponta.
+          Acreditamos que o processo de cura começa no momento em que você atravessa nossas portas. Atendemos em dois
+          endereços em Recife, cada um combinando uma atmosfera serena com infraestrutura médica de ponta.
         </p>
-        <div class="flex items-start gap-4">
-          <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
-            <span class="material-symbols-outlined">location_on</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 lg:gap-14">
+        <!-- Local 1: Hospital Português -->
+        <div class="flex flex-col gap-8 reveal-left">
+          <div class="flex justify-center">
+            <div class="relative">
+              <div class="absolute -inset-3 bg-sand/50 rounded-2xl -z-10"></div>
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <img src="dra-ivanilde-nova.jpg" alt="Hospital Português — Clínica RCDB, Recife"
+                  class="w-full h-full object-cover aspect-[4/3]" loading="lazy" />
+              </div>
+            </div>
           </div>
-          <div>
-            <p class="font-bold text-slate-900">Hospital Português — Clínica RCDB</p>
-            <p class="text-gray-custom text-sm">Av. Gov. Agamenon Magalhães, 4760 — Real Cirurgia Bariátrica e
-              Digestiva<br />Recife - PE</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
-            <span class="material-symbols-outlined">schedule</span>
-          </div>
-          <div>
-            <p class="font-bold text-slate-900">Horário de Atendimento</p>
-            <p class="text-gray-custom text-sm">Segunda-feira: 13:00–19:00 &nbsp;|&nbsp; Quinta-feira: 13:00–19:00</p>
+          <div class="flex flex-col gap-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Hospital Português — Clínica RCDB</p>
+                <p class="text-gray-custom text-sm">Av. Gov. Agamenon Magalhães, 4760 — Real Cirurgia Bariátrica e
+                  Digestiva<br />Paissandu, Recife - PE</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+                <span class="material-symbols-outlined">schedule</span>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Horário de Atendimento</p>
+                <p class="text-gray-custom text-sm">Segunda-feira: 13:00–19:00 &nbsp;|&nbsp; Quinta-feira: 13:00–19:00</p>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Hospital+Portugu%C3%AAs+Av.+Gov.+Agamenon+Magalh%C3%A3es+4760+Recife+PE"
+              target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary/80 transition-colors">
+              <span class="material-symbols-outlined text-lg">map</span>
+              Ver no Google Maps
+            </a>
           </div>
         </div>
 
+        <!-- Local 2: Clínica Lunes -->
+        <div class="flex flex-col gap-8 reveal-right">
+          <div class="flex justify-center">
+            <div class="relative">
+              <div class="absolute -inset-3 bg-sand/50 rounded-2xl -z-10"></div>
+              <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-sand/40">
+                <img src="clinica-lunes.jpg" alt="Clínica Lunes — RioMar Trade Center, Pina, Recife"
+                  class="w-full h-full object-cover aspect-[4/3]" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Clínica Lunes — RioMar Trade Center</p>
+                <p class="text-gray-custom text-sm">Av. República do Líbano, 251 — Torre 4, Sala 1813<br />Pina, Recife -
+                  PE, 51110-160</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="bg-primary/10 p-3 rounded-lg text-primary shrink-0">
+                <span class="material-symbols-outlined">schedule</span>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900">Horário de Atendimento</p>
+                <p class="text-gray-custom text-sm">Sexta-feira: 08:00–13:00</p>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=Cl%C3%ADnica+Lunes+Av.+Rep%C3%BAblica+do+L%C3%ADbano+251+Torre+4+Pina+Recife+PE"
+              target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-primary/80 transition-colors">
+              <span class="material-symbols-outlined text-lg">map</span>
+              Ver no Google Maps
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -598,6 +651,7 @@
           <li><a href="https://www.escavador.com/sobre/9599033/ivanilde-vasconcelos-cavalcanti" target="_blank"
               class="hover:text-primary transition-colors">Sobre Dra. Ivanilde</a></li>
           <li><a href="especialidades.html" class="hover:text-primary transition-colors">Áreas de Atuação</a></li>
+          <li><a href="index.html#locais" class="hover:text-primary transition-colors">Locais de Atendimento</a></li>
           <li><a href="https://wa.me/5581996849482" target="_blank" class="hover:text-primary transition-colors">Agendar
               Consulta</a></li>
         </ul>
@@ -612,8 +666,15 @@
           </li>
           <li class="flex items-start gap-3">
             <span class="material-symbols-outlined text-primary text-sm mt-0.5">location_on</span>
-            <span>Hospital Português — Clínica RCDB<br />Av. Gov. Agamenon Magalhães, 4760<br />Real Cirurgia Bariátrica
-              e Digestiva<br />Recife - PE</span>
+            <span><strong class="text-white font-bold">Hospital Português — Clínica RCDB</strong><br />Av. Gov. Agamenon
+              Magalhães, 4760<br />Paissandu, Recife - PE<br /><span class="text-slate-500">Seg. e Qui.:
+                13:00–19:00</span></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-primary text-sm mt-0.5">location_on</span>
+            <span><strong class="text-white font-bold">Clínica Lunes — RioMar Trade Center</strong><br />Av. República do
+              Líbano, 251 — Torre 4, Sala 1813<br />Pina, Recife - PE<br /><span class="text-slate-500">Sex.:
+                08:00–13:00</span></span>
           </li>
         </ul>
       </div>
