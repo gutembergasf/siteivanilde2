@@ -88,20 +88,45 @@
       opacity: 1;
     }
 
-    /* WhatsApp pulse */
-    .wa-fab {
-      animation: wa-pulse 2.2s infinite;
+    /* WhatsApp FAB — anéis animados nos pseudo-elementos (não no botão,
+       para não sobrescrever o hover:scale do Tailwind) */
+    .wa-fab::before,
+    .wa-fab::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      border: 2px solid rgba(37, 211, 102, .55);
+      animation: wa-ring 2.6s ease-out infinite;
+      pointer-events: none;
     }
 
-    @keyframes wa-pulse {
+    .wa-fab::after {
+      animation-delay: 1.3s;
+    }
 
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, .45);
+    @keyframes wa-ring {
+      0% {
+        transform: scale(1);
+        opacity: .7;
       }
 
-      50% {
-        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+      70% {
+        transform: scale(1.55);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.55);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .wa-fab::before,
+      .wa-fab::after {
+        animation: none;
       }
     }
 
